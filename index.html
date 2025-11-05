@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-	<!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-WX6KPB02PV"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -67,15 +67,24 @@
             </div>
         </div>
         <div class="header-right">
-            <span class="star-icon">⭐</span>
-            <button class="lang-select">Chọn Ngôn Ngữ</button>
-            <i class="far fa-bell icon"></i>
+    <span class="star-icon">⭐</span>
+    <button class="lang-select">Chọn Ngôn Ngữ</button>
+    <i class="far fa-bell icon"></i>
+    
+    <div class="user-info-dropdown-container" id="userInfoDropdownContainer">
+        <a href="#" class="user-info-toggle" id="userInfoToggle">
             <i class="fas fa-user-circle avatar"></i>
             <div class="user-info">
                 <span>Liên Hệ</span>
                 <span class="role">ADMIN</span>
             </div>
+        </a>
+        
+        <div class="user-dropdown-menu" id="userDropdownMenu">
         </div>
+    </div>
+    </div>
+    
     </header>
 
     <div class="main-container">
@@ -177,10 +186,7 @@
         <a href="#" class="fixed-social-icon zalo"><img src="images/placeholder-zalo.png" alt="Zalo Icon"></a>
         <a href="#" class="fixed-social-icon youtube"><i class="fab fa-youtube"></i></a>
     </div>
-
+	<script src="userData.js"></script>
     <script src="scripts.js"></script> 
 </body>
-
 </html>
-
-

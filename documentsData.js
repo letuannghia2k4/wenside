@@ -14,7 +14,7 @@ const documentsList = [
         tag: "Tài liệu miễn phí",
         downloads: "110",
         image: "placeholder-laptrinhc.jpg",
-        link: "#",
+        link: "https://drive.google.com/drive/folders/1Kj_w9zfepyTs6DrORDl3-E09CeegmzaW?usp=sharing",
     },
     {
         name: "Tài Liệu Học Lập Trình Hướng Đối Tượng",

@@ -1,3 +1,30 @@
+// --- LOGIC HIỂN THỊ DROPDOWN USER (TỪ userData.js) ---
+const renderUserDropdown = () => {
+    // Kiểm tra và thoát nếu không tìm thấy phần tử HTML hoặc dữ liệu
+    const menu = document.getElementById('userDropdownMenu');
+    if (!menu || typeof userDropdownItems === 'undefined') return; 
+
+    let htmlContent = '<ul>';
+    userDropdownItems.forEach(item => {
+        // Biến iconClass thành HTML cho icon
+        const iconHtml = `<i class="${item.iconClass}"></i>`;
+        
+        // LOGIC SỬA ĐỔI: Chỉ thêm target="_blank" nếu link không phải là trang nội bộ (ví dụ: .html)
+        const targetAttr = item.link.includes('.html') || item.link === '#' ? '' : 'target="_blank"';
+        
+        htmlContent += `
+            <li>
+                <a href="${item.link}" ${targetAttr}>
+                    ${iconHtml}
+                    ${item.name}
+                </a>
+            </li>
+        `;
+    });
+    htmlContent += '</ul>';
+    
+    menu.innerHTML = htmlContent;
+};
 // --- LOGIC HIỂN THỊ PHẦN MỀM ---
 const renderSoftwareCards = () => {
     const grid = document.getElementById('softwareGrid');
@@ -179,5 +206,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (document.getElementById('softwareGrid')) {
         renderSoftwareCards(); 
+    }
+	// ... (logic Modal, Menu Mobile, renderDocumentCards, renderSoftwareCards đã có)
+
+    // === GỌI HÀM HIỂN THỊ DROPDOWN ===
+    renderUserDropdown(); 
+
+    // === LOGIC ẨN/HIỆN DROPDOWN USER ===
+    const dropdownContainer = document.getElementById('userInfoDropdownContainer');
+    const toggleButton = document.getElementById('userInfoToggle');
+
+    if (dropdownContainer && toggleButton) {
+        toggleButton.addEventListener('click', (event) => {
+            event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ <a> (chuyển trang)
+            event.stopPropagation(); // Ngăn chặn sự kiện click lan truyền lên window
+            dropdownContainer.classList.toggle('open');
+        });
+
+        // Đóng dropdown khi click ra ngoài
+        window.addEventListener('click', (event) => {
+            // Kiểm tra nếu dropdown đang mở VÀ click không nằm trong container dropdown
+            if (dropdownContainer.classList.contains('open') && !dropdownContainer.contains(event.target)) {
+                dropdownContainer.classList.remove('open');
+            }
+        });
     }
 });
