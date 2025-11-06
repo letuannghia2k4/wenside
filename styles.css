@@ -651,7 +651,7 @@ a:hover { text-decoration: none; }
     .header-right .fa-bell {
         display: none; 
     }
-    /* NÚT "LIÊN HỆ ADMIN" SẼ TỰ ĐỘNG HIỂN THỊ LẠI */
+    /* (Nút "Liên Hệ ADMIN" sẽ hiển thị) */
 
     .top-header {
         padding: 8px 15px;
@@ -714,6 +714,7 @@ a:hover { text-decoration: none; }
 
     /* --- SỬA LỖI PROFILE PAGE TRÊN DI ĐỘNG --- */
     
+    /* 1. Xếp chồng 2 cột Profile */
     .profile-page-grid {
         grid-template-columns: 1fr;
     }
@@ -721,7 +722,7 @@ a:hover { text-decoration: none; }
         width: 100%;
     }
 
-    /* Sửa lỗi Timeline (Bố cục 1 cột) */
+    /* 2. Sửa lỗi Timeline (Bố cục 1 cột) */
     .timeline-section {
         padding: 20px 10px;
     }
