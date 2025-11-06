@@ -626,7 +626,7 @@ a:hover { text-decoration: none; }
         gap: 10px;
     }
     
-    /* SỬA LỖI PROFILE: Chuyển lưới profile về 1 cột */
+    /* SỬA LỖI PROFILE: Chuyển lưới profile về 1 cột trên Tablet */
     .profile-page-grid {
         grid-template-columns: 1fr;
     }
@@ -644,11 +644,15 @@ a:hover { text-decoration: none; }
     .header-right {
         gap: 8px;
     }
-    /* Ẩn text "Chọn Ngôn Ngữ" và "Liên Hệ ADMIN" */
+    
+    /* SỬA LỖI: Ẩn cả Nút Ngôn Ngữ, Info, Sao, Chuông */
     .header-right .lang-select,
-    .header-right .user-info-dropdown-container {
+    .header-right .user-info-dropdown-container,
+    .header-right .star-icon,
+    .header-right .fa-bell {
         display: none; 
     }
+
     .top-header {
         padding: 8px 15px;
     }
@@ -720,7 +724,7 @@ a:hover { text-decoration: none; }
         width: 100%;
     }
 
-    /* Sửa lỗi Timeline */
+    /* Sửa lỗi Timeline (Bố cục 1 cột) */
     .timeline-section {
         padding: 20px 10px;
     }
@@ -733,20 +737,25 @@ a:hover { text-decoration: none; }
         transform: translateX(-50%);
     }
     .timeline-content-wrapper {
-        flex-direction: column; /* Xếp chồng Năm và Thẻ */
+        flex-direction: column !important; /* Xếp chồng Năm và Thẻ (QUAN TRỌNG) */
         width: 100%;
         padding-left: 20px; /* Tạo khoảng trống so với đường kẻ */
+        align-items: flex-start; /* Căn trái */
     }
     .timeline-date-label, 
     .timeline-card {
         width: 100%;
+        max-width: 100%; /* Đảm bảo thẻ dài ra */
         position: static; /* Hủy bỏ căn chỉnh 50% */
         transform: none;
         text-align: left !important; /* Luôn căn trái */
         padding: 0 0 0 20px; /* Căn lề sau đường kẻ */
     }
+    .timeline-date-label {
+         padding-bottom: 10px; /* Thêm khoảng cách khi xếp chồng */
+    }
     .timeline-card {
-        margin: 10px 0 0 0 !important; /* Reset margin */
+        margin: 0 !important; /* Reset margin */
         padding-left: 15px;
         padding-right: 15px;
         border-left: 4px solid !important; /* Luôn dùng viền trái */
