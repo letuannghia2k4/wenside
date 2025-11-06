@@ -645,13 +645,13 @@ a:hover { text-decoration: none; }
         gap: 8px;
     }
     
-    /* SỬA LỖI: Ẩn cả Nút Ngôn Ngữ, Info, Sao, Chuông */
+    /* SỬA LỖI: Chỉ ẩn Ngôn Ngữ, Sao, Chuông */
     .header-right .lang-select,
-    .header-right .user-info-dropdown-container,
     .header-right .star-icon,
     .header-right .fa-bell {
         display: none; 
     }
+    /* NÚT "LIÊN HỆ ADMIN" SẼ TỰ ĐỘNG HIỂN THỊ LẠI */
 
     .top-header {
         padding: 8px 15px;
@@ -660,7 +660,7 @@ a:hover { text-decoration: none; }
     /* Kích hoạt nút Menu */
     .menu-toggle {
         display: block; 
-        order: -1; /* Đẩy nút menu lên đầu */
+        order: -1; 
         margin-right: 10px;
     }
     .header-left {
@@ -669,7 +669,7 @@ a:hover { text-decoration: none; }
     
     /* MAIN CONTAINER: Chuyển thành 1 cột */
     .main-container, .main-container-full {
-        grid-template-columns: 1fr; /* Chỉ còn Main Content */
+        grid-template-columns: 1fr; 
         padding: 10px 10px 0;
         gap: 10px;
     }
@@ -677,17 +677,16 @@ a:hover { text-decoration: none; }
     /* LEFT SIDEBAR: Thay đổi sang chế độ Mobile Menu */
     .left-sidebar {
         position: fixed; 
-        top: 60px; /* Ngay dưới Header */
+        top: 60px; 
         left: 0;
         height: calc(100% - 60px); 
-        z-index: 900; /* Nằm trên nội dung chính */
+        z-index: 900; 
         max-height: none;
         box-shadow: 2px 0 5px rgba(0,0,0,0.3);
         transform: translateX(-100%); 
         border-radius: 0;
     }
 
-    /* Khi sidebar được mở (dùng JS để thêm class 'open') */
     .left-sidebar.open {
         transform: translateX(0);
     }
@@ -698,25 +697,23 @@ a:hover { text-decoration: none; }
         gap: 8px;
     }
 
-    /* Lưới Card Dịch Vụ: Giảm xuống 1 cột */
     .service-cards-grid {
         grid-template-columns: 1fr;
         gap: 10px;
     }
     
-    /* Footer */
     .copyright-footer {
         text-align: center;
         padding: 15px 0;
         font-size: 0.8em;
     }
 
-    /* Ẩn icon Facebook, Zalo nổi */
     .fixed-social-icons {
         display: none;
     }
 
     /* --- SỬA LỖI PROFILE PAGE TRÊN DI ĐỘNG --- */
+    
     .profile-page-grid {
         grid-template-columns: 1fr;
     }
@@ -729,37 +726,37 @@ a:hover { text-decoration: none; }
         padding: 20px 10px;
     }
     .timeline-line {
-        left: 20px; /* Di chuyển đường kẻ về sát bên trái */
+        left: 20px; 
         transform: translateX(0);
     }
     .timeline-dot {
-        left: 20px; /* Di chuyển chấm lục giác theo đường kẻ */
+        left: 20px; 
         transform: translateX(-50%);
     }
     .timeline-content-wrapper {
-        flex-direction: column !important; /* Xếp chồng Năm và Thẻ (QUAN TRỌNG) */
+        flex-direction: column !important; 
         width: 100%;
-        padding-left: 20px; /* Tạo khoảng trống so với đường kẻ */
-        align-items: flex-start; /* Căn trái */
+        padding-left: 20px; 
+        align-items: flex-start; 
     }
     .timeline-date-label, 
     .timeline-card {
         width: 100%;
-        max-width: 100%; /* Đảm bảo thẻ dài ra */
-        position: static; /* Hủy bỏ căn chỉnh 50% */
+        max-width: 100%; 
+        position: static; 
         transform: none;
-        text-align: left !important; /* Luôn căn trái */
-        padding: 0 0 0 20px; /* Căn lề sau đường kẻ */
+        text-align: left !important; 
+        padding: 0 0 0 20px; 
     }
     .timeline-date-label {
-         padding-bottom: 10px; /* Thêm khoảng cách khi xếp chồng */
+         padding-bottom: 10px; 
     }
     .timeline-card {
-        margin: 0 !important; /* Reset margin */
+        margin: 0 !important; 
         padding-left: 15px;
         padding-right: 15px;
-        border-left: 4px solid !important; /* Luôn dùng viền trái */
-        border-right: none !important; /* Bỏ viền phải */
+        border-left: 4px solid !important; 
+        border-right: none !important; 
     }
 }
 
