@@ -154,18 +154,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeBtn = document.querySelector(".close-btn");
     const hideBtn = document.getElementById("hideModalBtn");
     const okBtn = document.getElementById("okModalBtn");
-    const MODAL_STORAGE_KEY = 'hideModal';
+    
+    // SỬA LỖI: Đổi tên Key để tránh xung đột với key cũ
+    const MODAL_STORAGE_KEY = 'hideModalUntil'; 
 
     const closeModal = () => { if (modal) modal.style.display = "none"; };
-    const hideForOneHour = () => { localStorage.setItem(MODAL_STORAGE_KEY, 'true'); closeModal(); };
+    
+    // SỬA LỖI: Hàm này sẽ ẩn 1 GIỜ (60*60*1000 milliseconds)
+    const hideForOneHour = () => { 
+        // Lấy thời gian hiện tại + 1 giờ
+        const expiryTime = new Date().getTime() + (60 * 60 * 1000);
+        localStorage.setItem(MODAL_STORAGE_KEY, expiryTime); 
+        closeModal(); 
+    };
 
-    // Khởi tạo Modal
-    if (localStorage.getItem(MODAL_STORAGE_KEY) !== 'true') {
+    // Khởi tạo Modal (SỬA LỖI LOGIC)
+    const hideUntil = localStorage.getItem(MODAL_STORAGE_KEY);
+    const now = new Date().getTime();
+
+    if (!hideUntil || now > parseInt(hideUntil)) { // Nếu chưa set, hoặc đã hết hạn
+        if (hideUntil) { // Nếu đã hết hạn thì xóa key cũ
+            localStorage.removeItem(MODAL_STORAGE_KEY);
+        }
         setTimeout(() => { if (modal) modal.style.display = "block"; }, 500);
     }
+    
     if (closeBtn) closeBtn.onclick = closeModal;
     if (okBtn) okBtn.onclick = closeModal;
-    if (hideBtn) hideBtn.onclick = hideForOneHour;
+    if (hideBtn) hideBtn.onclick = hideForOneHour; // Gán hàm đã sửa
+    
     window.onclick = (event) => { 
         if (event.target === modal) { closeModal(); }
         if (event.target === multiDownloadModal) { if (multiDownloadModal) multiDownloadModal.style.display = 'none'; }

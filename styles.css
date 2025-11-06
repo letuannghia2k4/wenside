@@ -610,7 +610,7 @@ a:hover { text-decoration: none; }
 /* === MEDIA QUERIES (RESPONSIVE) === */
 /* -------------------------------------- */
 
-/* Cho máy tính bảng và màn hình nhỏ hơn (Ví dụ: dưới 1024px) */
+/* Cho máy tính bảng (Dưới 1024px) */
 @media (max-width: 1024px) {
     /* 1. Trang Chủ (Main-container) chuyển từ 3 cột sang 2 cột */
     .main-container {
@@ -625,9 +625,17 @@ a:hover { text-decoration: none; }
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
+    
+    /* SỬA LỖI PROFILE: Chuyển lưới profile về 1 cột */
+    .profile-page-grid {
+        grid-template-columns: 1fr;
+    }
+    .profile-info-column {
+        width: 100%;
+    }
 }
 
-/* Cho điện thoại và màn hình rất nhỏ (Ví dụ: dưới 768px) */
+/* Cho điện thoại (Dưới 768px) */
 @media (max-width: 768px) {
     /* HEADER: Ẩn các thành phần lớn */
     .search-bar {
@@ -636,9 +644,10 @@ a:hover { text-decoration: none; }
     .header-right {
         gap: 8px;
     }
+    /* Ẩn text "Chọn Ngôn Ngữ" và "Liên Hệ ADMIN" */
     .header-right .lang-select,
-    .header-right .user-info {
-        display: none; /* Ẩn Chọn Ngôn Ngữ và Tên/Role */
+    .header-right .user-info-dropdown-container {
+        display: none; 
     }
     .top-header {
         padding: 8px 15px;
@@ -663,7 +672,6 @@ a:hover { text-decoration: none; }
 
     /* LEFT SIDEBAR: Thay đổi sang chế độ Mobile Menu */
     .left-sidebar {
-        /* Đặt lại thuộc tính Mobile Menu */
         position: fixed; 
         top: 60px; /* Ngay dưới Header */
         left: 0;
@@ -671,7 +679,6 @@ a:hover { text-decoration: none; }
         z-index: 900; /* Nằm trên nội dung chính */
         max-height: none;
         box-shadow: 2px 0 5px rgba(0,0,0,0.3);
-        /* Mặc định ẩn trên Mobile */
         transform: translateX(-100%); 
         border-radius: 0;
     }
@@ -698,6 +705,52 @@ a:hover { text-decoration: none; }
         text-align: center;
         padding: 15px 0;
         font-size: 0.8em;
+    }
+
+    /* Ẩn icon Facebook, Zalo nổi */
+    .fixed-social-icons {
+        display: none;
+    }
+
+    /* --- SỬA LỖI PROFILE PAGE TRÊN DI ĐỘNG --- */
+    .profile-page-grid {
+        grid-template-columns: 1fr;
+    }
+    .profile-info-column {
+        width: 100%;
+    }
+
+    /* Sửa lỗi Timeline */
+    .timeline-section {
+        padding: 20px 10px;
+    }
+    .timeline-line {
+        left: 20px; /* Di chuyển đường kẻ về sát bên trái */
+        transform: translateX(0);
+    }
+    .timeline-dot {
+        left: 20px; /* Di chuyển chấm lục giác theo đường kẻ */
+        transform: translateX(-50%);
+    }
+    .timeline-content-wrapper {
+        flex-direction: column; /* Xếp chồng Năm và Thẻ */
+        width: 100%;
+        padding-left: 20px; /* Tạo khoảng trống so với đường kẻ */
+    }
+    .timeline-date-label, 
+    .timeline-card {
+        width: 100%;
+        position: static; /* Hủy bỏ căn chỉnh 50% */
+        transform: none;
+        text-align: left !important; /* Luôn căn trái */
+        padding: 0 0 0 20px; /* Căn lề sau đường kẻ */
+    }
+    .timeline-card {
+        margin: 10px 0 0 0 !important; /* Reset margin */
+        padding-left: 15px;
+        padding-right: 15px;
+        border-left: 4px solid !important; /* Luôn dùng viền trái */
+        border-right: none !important; /* Bỏ viền phải */
     }
 }
 
@@ -793,7 +846,7 @@ a:hover { text-decoration: none; }
 
 .profile-page-grid {
     display: grid;
-    grid-template-columns: 300px 1fr; /* Cố định cột trái và linh hoạt cột phải */
+    grid-template-columns: 450px 1fr; /* Cố định cột trái và linh hoạt cột phải */
     gap: 20px;
 }
 
@@ -808,7 +861,7 @@ a:hover { text-decoration: none; }
 /* Cột Trái - Tóm tắt Profile */
 .profile-info-column {
     /* Đảm bảo chiều rộng cố định */
-    width: 300px; 
+    width: 450px; 
 }
 .profile-summary-card {
     padding: 25px 20px;
@@ -1091,7 +1144,7 @@ a:hover { text-decoration: none; }
     padding-left: 40px; /* Khoảng cách từ đường kẻ */
 }
 .timeline-event:nth-child(odd) .timeline-card {
-    text-align: left; /* Nội dung thẻ luôn căn trái */
+    text-align: right; /* Nội dung thẻ luôn căn trái */
     padding-right: 40px; /* Khoảng cách từ đường kẻ */
     border-right: 4px solid; /* Viền bên trong */
 }
